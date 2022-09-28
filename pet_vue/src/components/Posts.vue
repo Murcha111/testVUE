@@ -2,9 +2,10 @@
   <div>
     <h3>список</h3>
      <post-item v-for="post in posts" 
-     
      :post="post"
-     v-bind:key="post.id"/>
+     :key="post.id"
+     @remove="$emit('remove', post)"
+     />
   </div>
 
 </template>
