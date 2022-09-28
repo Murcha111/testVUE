@@ -1,13 +1,18 @@
 <template>
-  
-  <div v-for="post in posts" class="post" v-bind:key="post.id" >
-      <div> <strong>Название:</strong>  {{ post.title}}</div>
-      <div> <strong>Описание:</strong> {{ post.body}}</div>
+  <div>
+    <h3>список</h3>
+     <post-item v-for="post in posts" 
+     
+     :post="post"
+     v-bind:key="post.id"/>
   </div>
+
 </template>
 
 <script>
+import PostItem from './PostItem.vue'
   export default{
+  components: { PostItem },
     props:{
       posts: {
         type: Array,
@@ -20,8 +25,5 @@
 </script>
 
 <style scoped>
-.post{
-  border: 2px rgb(95, 140, 95) solid;
-  margin-top: 10px;
-  }
+
 </style>

@@ -35,12 +35,7 @@ export default {
   box-sizing: border-box;
 }
 
-.input {
-  width: 100%;
-  border: rgb(40, 61, 40) 1px solid;
-  padding: 10px 15px;
-  margin-top: 10px;
-}
+
 .app {
   padding: 20px;
 }

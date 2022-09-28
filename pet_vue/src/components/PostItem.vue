@@ -1,0 +1,38 @@
+<template>
+  <div class="post">
+    <div>
+      <div><strong>Название:</strong> {{ post.title }}</div>
+      <div><strong>Описание:</strong> {{ post.body }}</div>
+    </div>
+    <div class="post__btns">
+      <mybtn class="postItem_button">Удалить</mybtn>
+    </div>
+  </div>
+</template>
+
+<script>
+
+export default {
+
+  props: {
+    post: {
+      type: Object,
+      required: true,
+    },
+  },
+};
+</script>
+
+<style>
+.post {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px rgb(57, 83, 57) solid;
+  margin-top: 10px;
+  padding: 15px;
+}
+.postItem_button button{
+padding: 10px 20px;
+}
+</style>
