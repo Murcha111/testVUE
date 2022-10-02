@@ -8,7 +8,7 @@
     <my-dialog v-model:show="dialogVisible">
       <PostForm @create="createPost" />
     </my-dialog>
-    <Posts @remove="removePost" :posts="posts" v-if="!isLoadingPosts" />
+    <Posts @remove="removePost" :posts="sortedOurPosts" v-if="!isLoadingPosts" />
     <div v-else><p>подождите, идет загрузка...</p></div>
   </div>
 </template>
@@ -70,13 +70,22 @@ export default {
     this.getPosts();
   },
 
-  watch: {
-    selected(newValue){
-     this.posts.sort((post1, post2) => {
-      return post1[this.selected]?.localeCompare(post2[this.selected])
-    })
+  computed: {
+    sortedOurPosts(){
+      //чтобы не мутировать исходный массив с постами, разворачиваем его с рест оператором, мутировать будет его копия в итоге
+
+      return [...this.posts].sort((post1, post2) => post1[this.selected]?.localeCompare(post2[this.selected]))
     }
-  }
+  }, 
+
+//как пример: 
+  // watch: {
+  //   selected(newValue){
+  //    this.posts.sort((post1, post2) => {
+  //     return post1[this.selected]?.localeCompare(post2[this.selected])
+  //   })
+  //   }
+  // }
 };
 </script>
 
