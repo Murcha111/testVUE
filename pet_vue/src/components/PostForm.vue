@@ -2,27 +2,22 @@
   <form @submit.prevent>
     <my-input
       v-model="post.title"
-   
+     
+      type="text"
       placeholder="название"
     />
     <my-input
       v-model="post.body"
-  
+      
+      type="text"
       placeholder="описание"
     />
-    <mybtn
-    @click="createPost" 
-    class=" formBtn">добавить
-    </mybtn>
+    <button @click="createPost" class="btn">добавить</button>
   </form>
 </template>
 
 <script>
-import MyInput from './UI/MyInput.vue';
-
 export default {
-  components: { MyInput },
- 
   data() {
     return {
       post: {
@@ -41,6 +36,14 @@ export default {
       };
     },
   },
+//   watch: {
+//     post: {
+//      handler (newValue){
+// console.log(newValue, 'postform newvalue');
+//     },
+//     deep: true
+//     }
+//   }
 };
 </script>
 
@@ -49,9 +52,11 @@ form {
   display: flex;
   flex-direction: column;
 }
-.formBtn button {
-  margin-top: 10px;
+.btn {
   padding: 10px 20px;
   align-self: flex-end;
+  border: 1px solid rgb(77, 149, 77);
+  background-color: none;
+  color: rgb(39, 80, 80);
 }
 </style>
