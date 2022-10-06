@@ -1,6 +1,9 @@
 <template>
   <div class="app">
     <h2>Создать запись</h2>
+    <my-input 
+    placeholder="поиск..."
+    v-model="searchWord"/>
     <div class="app__btns">
       <mybtn class="button__createPost" @click="showDialog">Создать </mybtn>
       <my-select v-model="selected" :options="sortOptions"></my-select>
@@ -8,7 +11,7 @@
     <my-dialog v-model:show="dialogVisible">
       <PostForm @create="createPost" />
     </my-dialog>
-    <Posts @remove="removePost" :posts="sortedOurPosts" v-if="!isLoadingPosts" />
+    <Posts @remove="removePost" :posts="searchedAndFilteredPosts" v-if="!isLoadingPosts" />
     <div v-else><p>подождите, идет загрузка...</p></div>
   </div>
 </template>
@@ -30,6 +33,7 @@ export default {
       dialogVisible: false,
       isLoadingPosts: false,
       selected: '',
+      searchWord: '',
       sortOptions: [
         { value: "title", name: "по названию" },
         { value: "body", name: "по содержимому" },
@@ -75,6 +79,10 @@ export default {
       //чтобы не мутировать исходный массив с постами, разворачиваем его с рест оператором, мутировать будет его копия в итоге
 
       return [...this.posts].sort((post1, post2) => post1[this.selected]?.localeCompare(post2[this.selected]))
+    },
+
+    searchedAndFilteredPosts(){
+       return this.sortedOurPosts.filter(post => post.title.toLowerCase().includes(this.searchWord.toLowerCase()))
     }
   }, 
 
