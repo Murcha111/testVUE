@@ -10,6 +10,10 @@
       @click="$emit('remove', post)"
       class="postItem_button"
       >Удалить</mybtn>
+      <mybtn 
+      @click="$router.push(`/posts/${post.id}`)"
+      class="postItem_button"
+      >Открыть</mybtn>
     </div>
   </div>
 </template>
@@ -36,7 +40,10 @@ export default {
   margin-top: 10px;
   padding: 15px;
 }
-.postItem_button button{
+.postItem_button {
 padding: 10px 20px;
+}
+.post__btns{
+  display: flex;
 }
 </style>
