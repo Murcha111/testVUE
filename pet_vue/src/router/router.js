@@ -17,6 +17,11 @@ const routes = [
     component: Detail
 
   },
+  {
+    path: '/posts/:id',
+    component: Detail
+
+  },
 ]
 
  //регистрация роутера

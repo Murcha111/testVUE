@@ -1,6 +1,6 @@
 <template>
   <div>
-<h1>какое-то описание </h1>
+<h1>какое-то описание поста № {{ $route.params.id}}</h1>
   </div>
 </template>
 
